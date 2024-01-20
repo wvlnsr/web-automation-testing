@@ -8,6 +8,7 @@ module.exports = {
         FieldStok:'//*[@id="stok"]',
         FieldDropdownKategori:'//*[@id="kategori"]',
         SearchCategoryField:'//*[@placeholder="cari"]',
+        selectCategory:'//td[contains(":nth-child(1)")]',
         BtnSimpan:'//button[contains(text(),"simpan")]'
     }
 }

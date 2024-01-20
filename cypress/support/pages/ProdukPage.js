@@ -28,7 +28,9 @@ class ProdukPage {
 
     async SelectCategory(CategoryName){
         cy.xpath(locator.datatestid.FieldDropdownKategori).click()
-        cy.xpath(locator.datatestid.SearchCategoryField).type(CategoryName)
+        cy.xpath(locator.datatestid.SearchCategoryField).type(CategoryName)       
+        cy.xpath(locator.datatestid.selectCategory).click()
+        
     }
 
     async clickSave(){
