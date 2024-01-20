@@ -9,12 +9,14 @@ describe('Kategori', () => {
         LoginPage.fillEmail(UserData.validEmail);
         LoginPage.fillPassword(UserData.validPassword);
         LoginPage.clickLoginBtn();
-        KategoriPage.clickPembelianMenu();
+        KategoriPage.clickKategoriMenu();
     });
 
   it('Add Category', () => {
-    KategoriPage.clickAdd();
-    KategoriPage.FieldNama(UserData.CategoryName);
+    KategoriPage.clickAddCategory();
+    KategoriPage.InputCategoryName(UserData.CategoryName);
+    KategoriPage.clickSave();
+    cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
   })
 
 })
