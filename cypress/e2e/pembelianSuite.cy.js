@@ -20,7 +20,7 @@ describe('Pembelian', () => {
         ProdukPage.clickSave();
     });
 
-  it('Add Sales', () => {
+  it('Add Puchase', () => {
     PembelianPage.clickPembelianMenu();
     PembelianPage.clickAdd();
     PembelianPage.clickSearchProduct();
