@@ -9,5 +9,8 @@ module.exports = {
     HargaBeli:"1500",
     HargaJual:"3000",
     Stok:"10",
-    CategoryName:"Food"
+    CategoryName:"Food",
+    PenggunaName:"Bayu",
+    PenggunaEmail:"bayu@yopmail.com",
+    PenggunaPassword:"bayu123456"
 }
