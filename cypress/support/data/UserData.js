@@ -15,5 +15,6 @@ module.exports = {
     PenggunaPassword:"bayu123456",
     PelangganName:"Frily",
     PelangganNoHP:"081200000000",
-    PelangganAlamat:"Jl. Mawar No. 8 Jakarta"
+    PelangganAlamat:"Jl. Mawar No. 8 Jakarta",
+    Jumlah:"5"
 }

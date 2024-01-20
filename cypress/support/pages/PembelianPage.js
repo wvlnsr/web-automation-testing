@@ -14,8 +14,12 @@ class PembelianPage {
         cy.xpath(locator.datatestid.BtnProduk).click()
     }
 
-    async InputProductName(ProductName){
-        cy.xpath(locator.datatestid.FieldSearchProduct).type(ProductName)
+    async SelectProduct(){
+        cy.xpath(locator.datatestid.SelectedProduct).click()
+    }
+    
+    async InputJumlah(Jumlah){
+        cy.xpath(locator.datatestid.FieldJumlah).type(Jumlah)
     }
 
 }

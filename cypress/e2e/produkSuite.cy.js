@@ -25,6 +25,7 @@ describe('Produk', () => {
     ProdukPage.InputStok(UserData.Stok);
     ProdukPage.SelectCategory(UserData.CategoryName);
     ProdukPage.clickSave();
+    cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
   })
 
 })
