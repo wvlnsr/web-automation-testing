@@ -22,6 +22,9 @@ class PembelianPage {
         cy.xpath(locator.datatestid.FieldJumlah).type(Jumlah)
     }
 
+    async clickSave(){
+        cy.xpath(locator.datatestid.BtnSimpan).click()
+    }
 }
 
 module.exports = new PembelianPage();

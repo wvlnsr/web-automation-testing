@@ -5,6 +5,7 @@ module.exports = {
         BtnProduk:'//button[text()="produk"]',
         FieldSearchProduct:'//*[@class="chakra-input css-2s2hk4"]',
         SelectedProduct:'(//td[@class="css-u3dlpe"])[1]',
-        FieldJumlah:'//*[@inputmode="numeric"]'
+        FieldJumlah:'//*[@inputmode="numeric"]',
+        BtnSimpan:'//button[contains(text(),"Simpan")]'
     }
 }

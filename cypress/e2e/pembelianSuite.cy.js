@@ -26,6 +26,7 @@ describe('Pembelian', () => {
     PembelianPage.clickSearchProduct();
     PembelianPage.SelectProduct(UserData.ProductName);
     PembelianPage.InputJumlah(UserData.Jumlah);
+    PembelianPage.clickSave();
     cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
   })
 
