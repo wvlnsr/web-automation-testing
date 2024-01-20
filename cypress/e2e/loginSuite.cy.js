@@ -55,9 +55,4 @@ describe('Login', () => {
     cy.get('.chakra-alert').should('contain', 'Kredensial yang Anda berikan salah');
   })
 
-  after(() => {
-    cy.clearCookies();
-    cy.clearLocalStorage();
-  });
-
 })
