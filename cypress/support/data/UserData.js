@@ -12,5 +12,8 @@ module.exports = {
     CategoryName:"Food",
     PenggunaName:"Bayu",
     PenggunaEmail:"bayu@yopmail.com",
-    PenggunaPassword:"bayu123456"
+    PenggunaPassword:"bayu123456",
+    PelangganName:"Frily",
+    PelangganNoHP:"081200000000",
+    PelangganAlamat:"Jl. Mawar No. 8 Jakarta"
 }
