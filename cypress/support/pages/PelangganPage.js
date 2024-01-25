@@ -1,29 +1,34 @@
-const locator = require('../locators/pelangganLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class PelangganPage {
 
     async clickPelangganMenu(){
-        cy.xpath(locator.datatestid.PelangganMenu).click()
+        cy.xpath(locator.customer.PelangganMenu).click()
     }
-
     async clickAddPelanggan(){
-        cy.xpath(locator.datatestid.BtnAddPelanggan).click()
+        cy.xpath(locator.customer.BtnAddPelanggan).click()
     }
-
-    async InputPelangganName(PelangganName){
-        cy.xpath(locator.datatestid.FieldNamaPelanggan).type(PelangganName)
+    async InputPelangganName(name){
+        cy.xpath(locator.customer.FieldNamaPelanggan).type(name)
     }
-
-    async InputNoHPPelanggan(PelangganNoHP){
-        cy.xpath(locator.datatestid.FieldNoHPPelanggan).type(PelangganNoHP)
+    async InputNoHPPelanggan(phoneNumber){
+        cy.xpath(locator.customer.FieldNoHPPelanggan).type(phoneNumber)
     }
-
-    async InputPelangganAlamat(PelangganAlamat){
-        cy.xpath(locator.datatestid.FieldAlamatPelanggan).type(PelangganAlamat)
+    async InputPelangganAlamat(address){
+        cy.xpath(locator.customer.FieldAlamatPelanggan).type(address)
     }
-
     async clickSave(){
-        cy.xpath(locator.datatestid.BtnSimpan).click()
+        cy.xpath(locator.customer.BtnSimpan).click()
+    }
+    async verifySuccessfullyAdded() {
+        cy.contains(data.message.successMessage).should('be.visible');
+    }
+    async verifyEmptyField() {
+        cy.contains(data.message.emptyField).should('be.visible');
+    }
+    async verifyNumberOnly() {
+        cy.contains(data.message.numberOnly).should('be.visible');
     }
 
 }

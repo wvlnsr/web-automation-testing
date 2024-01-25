@@ -1,22 +1,30 @@
 const LoginPage = require('../support/pages/LoginPage');
 const KategoriPage = require('../support/pages/KategoriPage');
-const UserData = require('../support/data/UserData');
+const data = require('../support/data');
 
-describe('Kategori', () => {
+describe('Add category', () => {
 
     beforeEach(() => {
         cy.visit('');
-        LoginPage.fillEmail(UserData.validEmail);
-        LoginPage.fillPassword(UserData.validPassword);
+        LoginPage.fillEmail(data.registration.validEmail);
+        LoginPage.fillPassword(data.registration.validPassword);
         LoginPage.clickLoginBtn();
         KategoriPage.clickKategoriMenu();
     });
 
-  it('Add Category', () => {
-    KategoriPage.clickAddCategory();
-    KategoriPage.InputCategoryName(UserData.CategoryName);
-    KategoriPage.clickSave();
-    cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
-  })
+    it('Happy flow', () => {
+      KategoriPage.clickAddCategory();
+      KategoriPage.InputCategoryName(data.category.name);
+      KategoriPage.InputDescription(data.category.description);
+      KategoriPage.clickSave();
+      KategoriPage.verifySuccessfullyAdded();
+    })
+
+    it('Add category with empty name', () => {
+      KategoriPage.clickAddCategory();
+      KategoriPage.InputDescription(data.category.description);
+      KategoriPage.clickSave();
+      KategoriPage.verifyEmptyField();
+    })
 
 })

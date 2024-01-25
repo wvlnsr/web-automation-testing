@@ -1,24 +1,24 @@
 const LoginPage = require('../support/pages/LoginPage');
 const PenggunaPage = require('../support/pages/PenggunaPage');
-const UserData = require('../support/data/UserData');
+const data = require('../support/data');
 
-describe('Pengguna', () => {
+describe('Add User', () => {
 
     beforeEach(() => {
         cy.visit('');
-        LoginPage.fillEmail(UserData.validEmail);
-        LoginPage.fillPassword(UserData.validPassword);
+        LoginPage.fillEmail(data.registration.validEmail);
+        LoginPage.fillPassword(data.registration.validPassword);
         LoginPage.clickLoginBtn();
         PenggunaPage.clickPenggunaMenu();
     });
 
-  it('Add User', () => {
+  it('Happy flow', () => {
     PenggunaPage.clickAddPengguna();
-    PenggunaPage.InputPenggunaName(UserData.PenggunaName);
-    PenggunaPage.InputPenggunaEmail(UserData.PenggunaEmail);
-    PenggunaPage.InputPenggunaPassword(UserData.PenggunaPassword);
+    PenggunaPage.InputPenggunaName(data.user.name);
+    PenggunaPage.InputPenggunaEmail(data.user.email);
+    PenggunaPage.InputPenggunaPassword(data.user.password);
     PenggunaPage.clickSave();
-    cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
+    PenggunaPage.verifySuccessfullyAdded();
   })
 
 })

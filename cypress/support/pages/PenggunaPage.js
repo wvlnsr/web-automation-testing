@@ -1,31 +1,28 @@
-const locator = require('../locators/PenggunaLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class PenggunaPage {
-
     async clickPenggunaMenu(){
-        cy.xpath(locator.datatestid.PenggunaMenu).click()
+        cy.xpath(locator.user.PenggunaMenu).click()
     }
-
     async clickAddPengguna(){
-        cy.xpath(locator.datatestid.BtnAddPengguna).click()
+        cy.xpath(locator.user.BtnAddPengguna).click()
     }
-
-    async InputPenggunaName(PenggunaName){
-        cy.xpath(locator.datatestid.FieldNamaPengguna).type(PenggunaName)
+    async InputPenggunaName(name){
+        cy.xpath(locator.user.FieldNamaPengguna).type(name)
     }
-
-    async InputPenggunaEmail(PenggunaEmail){
-        cy.xpath(locator.datatestid.FieldEmailPengguna).type(PenggunaEmail)
+    async InputPenggunaEmail(email){
+        cy.xpath(locator.user.FieldEmailPengguna).type(email)
     }
-
-    async InputPenggunaPassword(PenggunaPassword){
-        cy.xpath(locator.datatestid.FieldPasswordPengguna).type(PenggunaPassword)
+    async InputPenggunaPassword(password){
+        cy.xpath(locator.user.FieldPasswordPengguna).type(password)
     }
-
     async clickSave(){
-        cy.xpath(locator.datatestid.BtnSimpan).click()
+        cy.xpath(locator.user.BtnSimpan).click()
     }
-
+    async verifySuccessfullyAdded() {
+        cy.contains(data.message.successMessage).should('be.visible');
+    }
 }
 
 module.exports = new PenggunaPage();

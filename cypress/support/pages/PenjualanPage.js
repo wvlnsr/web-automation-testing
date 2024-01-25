@@ -1,15 +1,13 @@
-const locator = require('../locators/PenjualanLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class PenjualanPage {
-
     async clickPenjualanMenu(){
-        cy.xpath(locator.datatestid.PenjualanMenu).click()
+        cy.xpath(locator.sales.PenjualanMenu).click()
     }
-
     async verifyPenjualanPage(){
-        cy.xpath('//div[contains(text(),"Request failed with status code 400")]').should('be.visible')
+        cy.contains(data.message.error400).should('be.visible');
     }
-
 }
 
 module.exports = new PenjualanPage();

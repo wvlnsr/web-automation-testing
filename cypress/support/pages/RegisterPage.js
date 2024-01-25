@@ -1,27 +1,28 @@
-const locator = require('../locators/RegisterLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class RegisterPage {
-
-    async fillStore(storeName){
-        cy.xpath(locator.datatestid.store_name).type(storeName)
+    async fillStore(validStoreName){
+        cy.xpath(locator.register.fieldName).type(validStoreName)
     }
-
-    async fillEmail(email){
-        cy.xpath(locator.datatestid.email_field).type(email)
+    async fillEmail(validEmail){
+        cy.xpath(locator.register.fieldEmail).type(validEmail)
     }
-
-    async fillPassword(password){
-        cy.xpath(locator.datatestid.password_field).type(password)
+    async fillPassword(validPassword){
+        cy.xpath(locator.register.fieldPassword).type(validPassword)
     }
-
     async clickLinkRegister(){
-        cy.xpath(locator.datatestid.link_register).click()
+        cy.xpath(locator.register.linkRegister).click()
     }
-
     async clickRegisterBtn(){
-        cy.xpath(locator.datatestid.btn_register).click()
+        cy.xpath(locator.register.btnRegister).click()
     }
-
+    async verifySuccessfullyRegistered() {
+        cy.contains(data.message.successStore).should('be.visible');
+    }
+    async verifyEmptyField() {
+        cy.contains(data.message.emptyField).should('be.visible');
+    }
 }
 
 module.exports = new RegisterPage();

@@ -1,21 +1,21 @@
 const LoginPage = require('../support/pages/LoginPage');
 const PenjualanPage = require('../support/pages/PenjualanPage');
-const UserData = require('../support/data/UserData');
+const data = require('../support/data');
 
-describe('Penjualan', () => {
+describe('Sales', () => {
 
   beforeEach(() => {
     cy.visit('');
-    LoginPage.fillEmail(UserData.validEmail);
-    LoginPage.fillPassword(UserData.validPassword);
+    LoginPage.fillEmail(data.registration.validEmail);
+    LoginPage.fillPassword(data.registration.validPassword);
     LoginPage.clickLoginBtn();
+    PenjualanPage.clickPenjualanMenu();
   });
 
-  it('Verify Penjualan Page', () => {
-    PenjualanPage.clickPenjualanMenu();
+  it('Verify Sales Page', () => {
     PenjualanPage.verifyPenjualanPage();
   })
 
-  // Because Sales Page is unavailable right now, so i only test to verify the page
+  // Can't access Sales Page due to invalid date
 
 })

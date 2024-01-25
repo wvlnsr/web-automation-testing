@@ -1,24 +1,50 @@
 const LoginPage = require('../support/pages/LoginPage');
 const PelangganPage = require('../support/pages/PelangganPage');
-const UserData = require('../support/data/UserData');
+const data = require('../support/data');
 
-describe('Pelanggan', () => {
+describe('Add Customer', () => {
 
     beforeEach(() => {
         cy.visit('');
-        LoginPage.fillEmail(UserData.validEmail);
-        LoginPage.fillPassword(UserData.validPassword);
+        LoginPage.fillEmail(data.registration.validEmail);
+        LoginPage.fillPassword(data.registration.validPassword);
         LoginPage.clickLoginBtn();
         PelangganPage.clickPelangganMenu();
     });
 
-  it('Add Customer', () => {
+  it('Happy Flow', () => {
     PelangganPage.clickAddPelanggan();
-    PelangganPage.InputPelangganName(UserData.PelangganName);
-    PelangganPage.InputNoHPPelanggan(UserData.PelangganNoHP);
-    PelangganPage.InputPelangganAlamat(UserData.PelangganAlamat);
+    PelangganPage.InputPelangganName(data.customer.name);
+    PelangganPage.InputNoHPPelanggan(data.customer.phoneNumber);
+    PelangganPage.InputPelangganAlamat(data.customer.address);
     PelangganPage.clickSave();
-    cy.get('.chakra-alert__desc').should('contain', 'item ditambahkan');
+    PelangganPage.verifySuccessfullyAdded();
+  })
+
+  it('Add Customer with Empty Name', () => {
+    PelangganPage.clickAddPelanggan();
+    PelangganPage.InputNoHPPelanggan(data.customer.phoneNumber);
+    PelangganPage.InputPelangganAlamat(data.customer.address);
+    PelangganPage.clickSave();
+    PelangganPage.verifyEmptyField();
+  })
+
+  it('Add Customer and Input Space-Only Phone Number', () => {
+    PelangganPage.clickAddPelanggan();
+    PelangganPage.InputPelangganName(data.customer.name);
+    PelangganPage.InputNoHPPelanggan(data.spaceOnly);
+    PelangganPage.InputPelangganAlamat(data.customer.address);
+    PelangganPage.clickSave();
+    PelangganPage.verifyNumberOnly();
+  })
+
+  it('Add Customer and Input Symbols for Phone Number', () => {
+    PelangganPage.clickAddPelanggan();
+    PelangganPage.InputPelangganName(data.customer.name);
+    PelangganPage.InputNoHPPelanggan(data.symbols);
+    PelangganPage.InputPelangganAlamat(data.customer.address);
+    PelangganPage.clickSave();
+    PelangganPage.verifyNumberOnly();
   })
 
 })

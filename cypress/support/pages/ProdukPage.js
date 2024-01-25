@@ -1,42 +1,51 @@
-const locator = require('../locators/ProdukLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class ProdukPage {
-
     async clickProdukMenu(){
-        cy.xpath(locator.datatestid.ProdukMenu).click()
+        cy.xpath(locator.product.ProdukMenu).click()
     }
-
     async clickAdd(){
-        cy.xpath(locator.datatestid.BtnAdd).click()
+        cy.xpath(locator.product.BtnAdd).click()
     }
-
-    async InputProductName(ProductName){
-        cy.xpath(locator.datatestid.FieldNama).type(ProductName)
+    async InputProductName(productName){
+        cy.xpath(locator.product.FieldNama).type(productName)
     }
-
-    async InputHargaBeli(HargaBeli){
-        cy.xpath(locator.datatestid.FieldHargaBeli).type(HargaBeli)
+    async InputHargaBeli(hargaBeli){
+        cy.xpath(locator.product.FieldHargaBeli).type(hargaBeli)
     }
-
-    async InputHargaJual(HargaJual){
-        cy.xpath(locator.datatestid.FieldHargaJual).type(HargaJual)
+    async InputHargaJual(hargaJual){
+        cy.xpath(locator.product.FieldHargaJual).type(hargaJual)
     }
-
-    async InputStok(Stok){
-        cy.xpath(locator.datatestid.FieldStok).clear().type(Stok)
+    async InputStok(stok){
+        cy.xpath(locator.product.FieldStok).clear().type(stok)
     }
-
-    async SelectCategory(CategoryName){
-        cy.xpath(locator.datatestid.FieldDropdownKategori).click()
-        cy.xpath(locator.datatestid.SearchCategoryField).type(CategoryName)       
-        cy.xpath(locator.datatestid.selectCategory).click()
-        
+    async SelectCategory(name){
+        cy.xpath(locator.product.FieldDropdownKategori).click()
+        cy.xpath(locator.product.SearchCategoryField).type(name)       
+        cy.xpath(locator.product.selectCategory).click() 
     }
-
     async clickSave(){
-        cy.xpath(locator.datatestid.BtnSimpan).click()
+        cy.xpath(locator.product.BtnSimpan).click()
     }
-
+    async verifySuccessfullyAdded() {
+        cy.contains(data.message.successMessage).should('be.visible');
+    }
+    async verifyEmptyField() {
+        cy.contains(data.message.emptyField).should('be.visible');
+    }
+    async verifyPriceMustBeGreater() {
+        cy.contains(data.message.priceMustBeGreater).should('be.visible');
+    }
+    async verifyCostMustBeGreaterThan0() {
+        cy.contains(data.message.costMustBeGreaterThan0).should('be.visible');
+    }
+    async clearProductCode() {
+        cy.get(locator.product.FieldCode).clear();
+    }
+    async isRequired() {
+        cy.contains(data.message.required).should('be.visible');
+    }
 }
 
 module.exports = new ProdukPage();

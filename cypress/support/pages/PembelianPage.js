@@ -1,29 +1,27 @@
-const locator = require('../locators/PembelianLocator');
+const locator = require('../locators');
+const data = require('../data');
 
 class PembelianPage {
-
     async clickPembelianMenu(){
-        cy.xpath(locator.datatestid.PembelianMenu).click()
+        cy.xpath(locator.purchase.PembelianMenu).click()
     }
-
     async clickAdd(){
-        cy.xpath(locator.datatestid.BtnAdd).click()
+        cy.xpath(locator.purchase.BtnAdd).click()
     }
-
     async clickSearchProduct(){
-        cy.xpath(locator.datatestid.BtnProduk).click()
+        cy.xpath(locator.purchase.BtnProduk).click()
     }
-
     async SelectProduct(){
-        cy.xpath(locator.datatestid.SelectedProduct).click()
+        cy.xpath(locator.purchase.SelectedProduct).click()
     }
-    
     async InputJumlah(Jumlah){
-        cy.xpath(locator.datatestid.FieldJumlah).type(Jumlah)
+        cy.xpath(locator.purchase.FieldJumlah).type(Jumlah)
     }
-
     async clickSave(){
-        cy.xpath(locator.datatestid.BtnSimpan).click()
+        cy.xpath(locator.purchase.BtnSimpan).click()
+    }
+    async verifySuccessfullyAdded() {
+        cy.contains(data.message.successMessage).should('be.visible');
     }
 }
 
